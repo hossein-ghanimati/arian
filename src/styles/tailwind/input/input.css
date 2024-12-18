@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+@layer base{
+  :root{
+    @apply 
+      scroll-smooth
+      font-shabnam 
+      font-normal 
+      text-base 
+      select-none
+    ;
+    direction: rtl
+  }
+
+  ::-webkit-scrollbar-track,
+  .has-horizontal-scroll::-webkit-scrollbar-track,
+  .has-vertical-scroll::-webkit-scrollbar-track{
+    @apply 
+      bg-[#dad9d9]
+    ;
+  }
+
+  ::-webkit-scrollbar-thumb,
+  .has-horizontal-scroll::-webkit-scrollbar-thumb,
+  .has-vertical-scroll::-webkit-scrollbar-thumb{
+    @apply 
+      bg-[#808080]
+      rounded-md
+      cursor-n-resize
+    ;
+  }
+
+  ::-webkit-scrollbar,
+  .has-horizontal-scroll::-webkit-scrollbar {
+    @apply 
+      w-2
+    ;
+  }
+
+  .has-vertical-scroll::-webkit-scrollbar {
+    @apply 
+      h-1
+    ;
+  }
+  
+
+  @font-face {
+    font-family: yekan;
+    src: url("/public/font/yekan/Yekan-Bakh-FaNum-07-Heavy.woff");
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: yekan;
+    src: url("/public/font/yekan/Yekan-Bakh-FaNum-07-Heavy.woff");
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: shabnam;
+    src: url("/public/font/shabnam/Shabnam-FD.woff");
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: shabnam;
+    src: url("/public/font/shabnam/Shabnam-Medium-FD.woff");
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: shabnam;
+    src: url("/public/font/shabnam/Shabnam-Bold-FD.woff");
+    font-weight: 700;
+  }
+}
+
+@layer utilities{
+  .mobile-menu-item__input:checked ~ .mobile-menu-item__dropdown{
+    @apply 
+      block
+      opacity-100
+    ;
+      
+  }
+
+  .text-success-foreground{
+    @apply
+      text-white      
+    ;
+  }
+
+  *:disabled {
+    @apply
+      opacity-50
+    ;
+  }
+  input{
+    @apply
+      outline-0
+      border-0
+    ;
+  }
+
+  div:where(.swal2-container) div:where(.swal2-popup) {
+    @apply
+    bg-custom-white dark:bg-gray-800 text-gray-700 dark:text-gray-100
+    ;
+  }
+}
