@@ -1,4 +1,5 @@
-import { InitialState } from "@/types/redux/todos.type";
+import { sortByFirst, sortByLast } from "@/ts/utils/calculation";
+import { InitialState, SortMethod } from "@/types/redux/todos.type";
 import { Todo, TodoStatus } from "@/types/todo.type";
 
 // --- Below Functions Have Refrence Effect On State ---
@@ -62,4 +63,24 @@ export const setPrevStatus = (
   const argument = action.meta.arg
   const todoIndex = state.todos.findIndex(todo => todo.id === argument.todo.id)
   state.todos[todoIndex].status = argument.prevStatus
+}
+
+export const setMethod = (
+  state: InitialState,
+  action: {
+    payload: SortMethod
+  }
+) => {
+  const newSortMethod = action.payload
+  let {todos, sortMethod} = state
+
+  sortMethod = newSortMethod;
+  todos = newSortMethod === "last" 
+    ? sortByLast(todos)
+    : sortByFirst(todos)
+
+  return {
+    todos,
+    sortMethod
+  }
 }
