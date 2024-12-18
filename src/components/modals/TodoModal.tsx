@@ -1,4 +1,5 @@
 import { setModalAction } from '@/redux/modal/modal'
+import { setOverlayAction } from '@/redux/overlay/overlay'
 import { AppDispatch, RootStates } from '@/redux/store'
 import  { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -6,18 +7,20 @@ import { useDispatch, useSelector } from 'react-redux'
 const TodoModal = () => {
   const modalSetting = useSelector((store: RootStates) => store.modal)
   const dispath: AppDispatch = useDispatch()
-  const closeModal = useCallback(() => 
+  
+  const closeModal = useCallback(() => {
     dispath(setModalAction(false))
-  , [])
+    dispath(setOverlayAction(false))
+  }, [])
   
   return (
     <div 
-      className={`flex bg-red-100 items-center justify-center min-h-screen transition-all w-full fixed ${modalSetting.isOpen ? "top-0" : "-top-full"}`}
+      className={`flex items-center justify-center min-h-screen transition-all w-full fixed z-40 ${modalSetting.isOpen ? "top-0" : "-top-full"}`}
       onClick={closeModal}
     >
       <div 
         onClick={e => e.stopPropagation()}
-        className="modal max-w-[450px] border border-gray-600 rounded-lg z-20 bg-custom-white overflow-hidden -translate-y-20"
+        className="modal mx-1 max-w-[450px] border border-gray-600 rounded-lg  bg-custom-white overflow-hidden -translate-y-20"
         id="todo_form"
       >
         <div 
