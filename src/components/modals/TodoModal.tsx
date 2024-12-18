@@ -3,13 +3,19 @@ import { AppDispatch, RootStates } from '@/redux/store'
 import { addTodoReq } from '@/services/axios/requests/todos'
 import { addTodoSchema } from '@/services/validation/todos'
 import { Field, Form, Formik } from 'formik'
-import  { useCallback } from 'react'
+import  { useCallback, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const TodoModal = () => {
   const modalSetting = useSelector((store: RootStates) => store.modal)
   const dispath: AppDispatch = useDispatch()
   const {closeModal} = useModal()
+  const inputRef = useRef<HTMLInputElement | null>(null)
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    modalSetting.isOpen && inputRef.current?.focus()    
+  }, [modalSetting.isOpen])
 
   const addTodo = useCallback((title: string) => {
     dispath(
@@ -39,9 +45,7 @@ const TodoModal = () => {
         <Formik
           initialValues={{title: ""}}
           validationSchema={addTodoSchema}
-          onSubmit={(values, config) => {
-            console.log(values.title);
-            
+          onSubmit={(values, config) => {            
             addTodo(values.title.trim())
             config.resetForm();
           }}
@@ -57,7 +61,7 @@ const TodoModal = () => {
                 >&times;</button>
               </div>
               <div className="body p-3">
-                <Field name="title" type="text" id="todo_input"
+                <Field innerRef={inputRef} autoFocus name="title" type="text" id="todo_input"
                   className='py-2 px-4 w-full m-1 cursor-pointer border border-black dark:border-white rounded-md'
                 />
                 <button type="submit" id="todo_submit" 

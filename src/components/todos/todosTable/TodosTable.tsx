@@ -28,6 +28,7 @@ const TodosTable = () => {
       {
         statuses.map(status => 
           <Column
+            key={status.slug}
             title={status.title}
             onRemove={removeTodo}
             todos={todoList.todos.filter(todo => todo.status === status.slug)}

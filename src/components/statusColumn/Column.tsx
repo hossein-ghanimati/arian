@@ -18,7 +18,7 @@ const Column = (props: {
         onDrop={() => "dropHandler(event)"}
       >
         {props.todos.map((todo) => (
-          <Todo onRemove={() => props.onRemove(todo)} {...todo} />
+          <Todo key={todo.id} onRemove={() => props.onRemove(todo)} {...todo} />
         ))}
       </div>
     </div>
