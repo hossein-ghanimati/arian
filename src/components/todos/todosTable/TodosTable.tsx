@@ -28,10 +28,10 @@ const TodosTable = () => {
       {
         statuses.map(status => 
           <Column
-            key={status.slug}
-            title={status.title}
+            dispatch={dispath}
             onRemove={removeTodo}
             todos={todoList.todos.filter(todo => todo.status === status.slug)}
+            {...status}
           />
         )
       }

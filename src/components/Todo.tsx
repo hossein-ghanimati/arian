@@ -1,4 +1,4 @@
-import { choseStatusColor } from "@/ts/utils/elems";
+import { choseStatusColor, dragStartHandler } from "@/ts/utils/elems";
 import { Todo as TodoType } from "@/types/todo.type";
 
 type TodoProps = TodoType & {
@@ -7,7 +7,7 @@ type TodoProps = TodoType & {
 
 const Todo = (props: TodoProps) => {
   return (
-    <p draggable="true" id="1"
+    <p draggable="true" id={props.id}
       className={`
         ${choseStatusColor(props.status)}
         mt-1
@@ -19,6 +19,9 @@ const Todo = (props: TodoProps) => {
         justify-between
         cursor-pointer
       `}
+      onDragStart={(event) =>{
+        dragStartHandler(event, props)
+      }}
     >
       <span>{props.title}</span>
       <span className="text-lg" onClick={props.onRemove}>x</span>

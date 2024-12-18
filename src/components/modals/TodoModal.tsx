@@ -23,7 +23,7 @@ const TodoModal = () => {
         {
           id: crypto.randomUUID(),
           title,
-          status: "unknown",
+          status: "notStarted",
           createdAt: (new Date()).toLocaleString()
         }
       )

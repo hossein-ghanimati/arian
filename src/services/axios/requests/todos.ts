@@ -2,6 +2,14 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import sendApiReq from "../configs/apiReq";
 import { Todo, TodoStatus } from "@/types/todo.type";
 
+export const getTodosReq = createAsyncThunk(
+  "todos/getTodos",
+  async () => {
+    const response = await sendApiReq().get("/todos", )
+    return response.data as Todo[]     
+  }
+)
+
 export const addTodoReq = createAsyncThunk(
   "todos/addTodo",
   async (todo: Todo, { rejectWithValue }) => {

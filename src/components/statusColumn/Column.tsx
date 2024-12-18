@@ -1,9 +1,13 @@
-import { Todo as TodoType } from "@/types/todo.type"
+import { TodoStatus, Todo as TodoType } from "@/types/todo.type"
 import Todo from "../Todo";
+import { dragOverHandler, dropHandler } from "@/ts/utils/elems";
+import { AppDispatch } from "@/redux/store";
 
 const Column = (props: {
   todos: TodoType[],
   title: string,
+  slug: TodoStatus,
+  dispatch: AppDispatch
   onRemove: (todo: TodoType) => void
 }) => {
   return (
@@ -14,8 +18,8 @@ const Column = (props: {
       <div
         className="status w-full h-full p-0"
         id="no_status"
-        onDragOver={() => "dragOverHandler(event)"}
-        onDrop={() => "dropHandler(event)"}
+        onDragOver={(e) => dragOverHandler(e)}
+        onDrop={(e) => dropHandler(e, props.dispatch, props.slug)}
       >
         {props.todos.map((todo) => (
           <Todo key={todo.id} onRemove={() => props.onRemove(todo)} {...todo} />

@@ -1,9 +1,10 @@
 import { useModal } from "@/hooks/useModal";
 import { Todo as TodoType } from "@/types/todo.type";
 import Todo from "../Todo";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef } from "react";
-import { RootStates } from "@/redux/store";
+import { AppDispatch, RootStates } from "@/redux/store";
+import { dragOverHandler, dropHandler } from "@/ts/utils/elems";
 
 const FirstColumn = (props: {
   todos: TodoType[];
@@ -12,6 +13,7 @@ const FirstColumn = (props: {
   const modalSetting = useSelector((store: RootStates) => store.modal);
   const btnRef = useRef<HTMLButtonElement | null>(null);
   const { openModal } = useModal();
+  const dispach: AppDispatch = useDispatch()
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
@@ -34,8 +36,8 @@ const FirstColumn = (props: {
       <div
         className="status status w-full h-full p-0"
         id="no_status"
-        onDragOver={() => "dragOverHandler(event)"}
-        onDrop={() => "dropHandler(event)"}
+        onDragOver={(e) => dragOverHandler(e)}
+        onDrop={(e) => dropHandler(e, dispach, "unknown")}
       >
         {props.todos.map((todo) => (
           <Todo key={todo.id} onRemove={() => props.onRemove(todo)} {...todo} />
