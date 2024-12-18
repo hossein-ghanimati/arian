@@ -1,12 +1,13 @@
 
-import React, { memo, useContext } from "react";
+import React, { memo } from "react";
 
 import "./styles/App.css";
-import { ThemeContext } from "./contexts/share/theme.context";
 import AppContent from "./AppContent";
+import { useSelector } from "react-redux";
+import { RootStates } from "./redux/store";
 
 const AppWrapper: React.FC = memo((): JSX.Element => {
-  const themeSetting = useContext(ThemeContext);
+  const themeSetting = useSelector((store: RootStates) => store.theme)
   
   return (
     <div 
