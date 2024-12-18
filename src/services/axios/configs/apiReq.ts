@@ -28,7 +28,7 @@ const sendApiReq = (includeAuthorization = false) => {
     },
     err => {
       console.warn("Your Req Has An Err :", err)
-      return Promise.reject(err)
+      throw Error (err)
     }
   )
   

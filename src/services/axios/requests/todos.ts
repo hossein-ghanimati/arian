@@ -7,12 +7,16 @@ export const addTodoReq = createAsyncThunk(
   async (todo: Todo, { rejectWithValue }) => {
     try {
       const response = await sendApiReq().post("/todos", todo)
+      console.log(response);
 
       if (response.status >= 300)
         throw new Error(response.statusText)
+      
     } catch (error) {
+      console.log(error);
+      
       const errorMessage = (error as Error).message
-      rejectWithValue(errorMessage)
+      return rejectWithValue(errorMessage)
     }
   }
 )
@@ -27,7 +31,7 @@ export const remvoeTodoReq = createAsyncThunk(
         throw new Error(response.statusText)
     } catch (error) {
       const errorMessage = (error as Error).message
-      rejectWithValue(errorMessage)
+      return rejectWithValue(errorMessage)
     }
   }
 )
@@ -50,7 +54,7 @@ export const changeTodoStatusReq = createAsyncThunk(
         throw new Error(response.statusText)
     } catch (error) {
       const errorMessage = (error as Error).message
-      rejectWithValue(errorMessage)
+      return rejectWithValue(errorMessage)
     }
   }
 )

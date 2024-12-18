@@ -28,7 +28,8 @@ export const removeTodo = (
   }
 ) => {
   /* eslint-disable @typescript-eslint/no-unused-expressions */  
-
+  console.log("remoaf");
+  
   const todoIndex = state.todos.findIndex(todo => todo.id === action.meta.arg.id)
   state.todos.splice(todoIndex, 1) 
 }

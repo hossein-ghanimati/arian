@@ -33,7 +33,7 @@ const TodoModal = () => {
   
   return (
     <div 
-      className={`flex items-center justify-center min-h-screen transition-all w-full fixed z-40 ${modalSetting.isOpen ? "top-0" : "-top-full"}`}
+      className={`flex items-center justify-center min-h-screen transition-all duration-1000 w-full fixed z-40 ${modalSetting.isOpen ? "top-0" : "-top-full"}`}
       onClick={closeModal}
     >
       <div 
