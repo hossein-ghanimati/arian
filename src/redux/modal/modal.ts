@@ -1,6 +1,6 @@
 
 import { createSlice } from "@reduxjs/toolkit";
-import { setIsOpen } from "../utils/utils";
+import { setIsOpen, toggleIsOpen } from "../utils/utils";
 
 
 const initialState = {
@@ -11,12 +11,14 @@ const slice = createSlice({
   name: "modalStatus",
   initialState,
   reducers: {
-    setModalStatusAction: setIsOpen
+    setModalAction: setIsOpen,
+    toggleModalAction: toggleIsOpen
   }
 })
 
 export const {
-  setModalStatusAction
+  setModalAction,
+  toggleModalAction
 } = slice.actions
 
 export default slice.reducer

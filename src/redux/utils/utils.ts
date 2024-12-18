@@ -8,3 +8,9 @@ export const setIsOpen = (
 ) => {
   state.isOpen = action.payload
 }
+
+export const toggleIsOpen = (
+  state: IsOpenState,
+) => {
+  state.isOpen = !state.isOpen
+}

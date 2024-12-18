@@ -1,6 +1,6 @@
 
 import { createSlice } from "@reduxjs/toolkit";
-import { setIsOpen } from "../utils/utils";
+import { setIsOpen, toggleIsOpen } from "../utils/utils";
 
 const initialState = {
   isOpen: false,
@@ -10,12 +10,14 @@ const slice = createSlice({
   name: "overlayStatus",
   initialState,
   reducers: {
-    setOverlayStatusAction: setIsOpen
+    setOverlayAction: setIsOpen,
+    toggleOverlayAction: toggleIsOpen
   }
 })
 
 export const {
-  setOverlayStatusAction
+  setOverlayAction,
+  toggleOverlayAction
 } = slice.actions
 
 export default slice.reducer
