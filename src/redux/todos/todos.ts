@@ -1,7 +1,7 @@
-import { addTodoReq, remvoeTodoReq } from "@/services/axios/requests/todos";
+import { addTodoReq, changeTodoStatusReq, remvoeTodoReq } from "@/services/axios/requests/todos";
 import { InitialState } from "@/types/redux/todos.type";
 import { createSlice } from "@reduxjs/toolkit";
-import { addTodo, removeTodo } from "./funcs";
+import { addTodo, removeTodo, setMethod, setNewStatus, setPrevStatus } from "./funcs";
 
 const initialState: InitialState = {
   todos: [],
@@ -12,7 +12,7 @@ const slice = createSlice({
   name: "todoList",
   initialState,
   reducers: {
-    
+    setMethodAction: setMethod
   },
   extraReducers : builder => {
     builder.addCase(
@@ -32,7 +32,20 @@ const slice = createSlice({
       remvoeTodoReq.rejected,
       addTodo
     )
+
+    builder.addCase(
+      changeTodoStatusReq.pending,
+      setNewStatus
+    )
+    builder.addCase(
+      changeTodoStatusReq.rejected,
+      setPrevStatus
+    )
   }
 })
+
+export const {
+  setMethodAction
+} = slice.actions
 
 export default slice.reducer
