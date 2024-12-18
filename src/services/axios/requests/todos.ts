@@ -6,9 +6,7 @@ export const addTodoReq = createAsyncThunk(
   "todos/addTodo",
   async (todo: Todo, { rejectWithValue }) => {
     try {
-      const response = await sendApiReq().post("/todos", {
-        data: todo
-      })
+      const response = await sendApiReq().post("/todos", todo)
 
       if (response.status >= 300)
         throw new Error(response.statusText)
@@ -46,9 +44,7 @@ export const changeTodoStatusReq = createAsyncThunk(
     }
   ) => {
     try {
-      const response = await sendApiReq().put(`/todos/${argument.todo.id}`, {
-        data: argument.todo
-      })
+      const response = await sendApiReq().put(`/todos/${argument.todo.id}`, argument.todo)
 
       if (response.status >= 300)
         throw new Error(response.statusText)
