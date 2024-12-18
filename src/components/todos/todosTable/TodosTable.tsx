@@ -1,56 +1,39 @@
-import React from "react";
+import Column from "@/components/statusColumn/Column";
+import FirstColumn from "@/components/statusColumn/FirstColumn";
+import { statuses } from "@/data/statuses";
+import { AppDispatch, RootStates } from "@/redux/store";
+import { remvoeTodoReq } from "@/services/axios/requests/todos";
+import { Todo } from "@/types/todo.type";
+import { useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const TodosTable = () => {
+  const todoList = useSelector((store: RootStates) => store.todoList);
+  const dispath: AppDispatch = useDispatch()
+
+  const removeTodo = useCallback((todo: Todo) => {
+    dispath(
+      remvoeTodoReq(
+        todo
+      )
+    )
+  },[])
+
   return (
-    <div className="todo-container">
-      <div className="cont">
-        <h1>No Status</h1>
-        <button
-          id="add_btn"
-          data-target-modal="#todo_form"
-          onclick="showModal()"
-        >
-          + Add Todo
-        </button>
-        <div
-          className="status"
-          id="no_status"
-          ondragover="dragOverHandler(event)"
-          ondrop="dropHandler(event)"
-        >
-          {/* <!-- <div className="todo" draggable="true" >
-              Buy a Pizza
-              <span className="close">&times;</span>
-            </div> --> */}
-        </div>
-      </div>
-      <div className="cont">
-        <h1>Not Started</h1>
-        <div
-          className="status"
-          id="not_started"
-          ondragover="dragOverHandler(event)"
-          ondrop="dropHandler(event)"
-        ></div>
-      </div>
-      <div className="cont">
-        <h1>inprogress</h1>
-        <div
-          className="status"
-          id="inprogress"
-          ondragover="dragOverHandler(event)"
-          ondrop="dropHandler(event)"
-        ></div>
-      </div>
-      <div className="cont">
-        <h1>completed</h1>
-        <div
-          className="status"
-          id="completed"
-          ondragover="dragOverHandler(event)"
-          ondrop="dropHandler(event)"
-        ></div>
-      </div>
+    <div className="todo-container w-[1000px] overflow-hidden h-[80vh] flex rounded-2xl">
+      <FirstColumn
+        onRemove={removeTodo}
+        todos={todoList.todos.filter(todo => todo.status === "unknown")}
+      />
+      {
+        statuses.map(status => 
+          <Column
+            title={status.title}
+            onRemove={removeTodo}
+            todos={todoList.todos.filter(todo => todo.status === status.slug)}
+          />
+        )
+      }
     </div>
   );
 };

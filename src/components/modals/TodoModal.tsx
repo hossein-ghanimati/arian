@@ -1,5 +1,4 @@
-import { setModalAction } from '@/redux/modal/modal'
-import { setOverlayAction } from '@/redux/overlay/overlay'
+import { useModal } from '@/hooks/useModal'
 import { AppDispatch, RootStates } from '@/redux/store'
 import { addTodoReq } from '@/services/axios/requests/todos'
 import { addTodoSchema } from '@/services/validation/todos'
@@ -10,11 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 const TodoModal = () => {
   const modalSetting = useSelector((store: RootStates) => store.modal)
   const dispath: AppDispatch = useDispatch()
-
-  const closeModal = useCallback(() => {
-    dispath(setModalAction(false))
-    dispath(setOverlayAction(false))
-  }, [])
+  const {closeModal} = useModal()
 
   const addTodo = useCallback((title: string) => {
     dispath(
@@ -33,7 +28,7 @@ const TodoModal = () => {
   
   return (
     <div 
-      className={`flex items-center justify-center min-h-screen transition-all duration-1000 w-full fixed z-40 ${modalSetting.isOpen ? "top-0" : "-top-full"}`}
+      className={`flex items-center justify-center min-h-screen transition-all duration-500 w-full fixed z-40 ${modalSetting.isOpen ? "top-0" : "-top-full"}`}
       onClick={closeModal}
     >
       <div 
