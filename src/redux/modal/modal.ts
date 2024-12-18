@@ -4,7 +4,7 @@ import { setIsOpen, toggleIsOpen } from "../utils/utils";
 
 
 const initialState = {
-  isOpen: false,
+  isOpen: true,
 }
 
 const slice = createSlice({

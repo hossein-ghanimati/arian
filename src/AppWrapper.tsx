@@ -1,7 +1,7 @@
 
 import React, { memo } from "react";
 
-import "./styles/App.css";
+import "./styles/tailwind/output/output.css";
 import AppContent from "./AppContent";
 import { useSelector } from "react-redux";
 import { RootStates } from "./redux/store";
