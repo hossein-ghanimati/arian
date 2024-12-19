@@ -34,7 +34,7 @@ const FirstColumn = (props: {
         + Add Todo
       </button>
       <div
-        className="status status w-full h-first-column-height p-0"
+        className="status status w-full h-first-column-height overflow-auto p-0"
         id="no_status"
         onDragOver={(e) => dragOverHandler(e)}
         onDrop={(e) => dropHandler(e, dispach, "unknown")}
