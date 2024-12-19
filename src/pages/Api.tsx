@@ -13,7 +13,7 @@ const Api = () => {
 
   console.log(data);
 
-  return data?.length ? (
+  return data?.title ? (
     <div className="grid container mb-8 mt-4 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2 bg-white dark:bg-gray-800">
       {[...Array(4).keys()].map((item) => (
         <Card key={item} {...data} />
