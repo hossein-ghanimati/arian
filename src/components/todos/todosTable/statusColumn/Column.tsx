@@ -1,5 +1,5 @@
 import { TodoStatus, Todo as TodoType } from "@/types/todo.type"
-import Todo from "../Todo";
+import Todo from "../../../Todo";
 import { dragOverHandler, dropHandler } from "@/ts/utils/elems";
 import { AppDispatch } from "@/redux/store";
 
@@ -16,7 +16,7 @@ const Column = (props: {
         className="absolute top-0 font-bold border-l border-stone-50 left-0 bg-zinc-700 text-stone-50 w-full py-4 px-4"
       >{props.title}</h1>
       <div
-        className="status w-full h-fll p-0 overflow-auto"
+        className="status w-full h-full p-0 overflow-auto"
         id="no_status"
         onDragOver={(e) => dragOverHandler(e)}
         onDrop={(e) => dropHandler(e, props.dispatch, props.slug)}

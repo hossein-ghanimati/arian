@@ -18,7 +18,7 @@ const Header = () => {
           <div className="flex items-center xs:order-2">
             <button
               onClick={() => {
-                const isOnApiPage = location.hash.length > 2 && location.hash !== "#/todos";
+                const isOnApiPage = location.hash.length > 2;
                 // eslint-disable-next-line @typescript-eslint/no-unused-expressions
                 isOnApiPage 
                   ? navigate("/")

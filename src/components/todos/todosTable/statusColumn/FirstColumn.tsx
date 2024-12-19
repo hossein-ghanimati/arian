@@ -1,6 +1,6 @@
 import { useModal } from "@/hooks/useModal";
 import { Todo as TodoType } from "@/types/todo.type";
-import Todo from "../Todo";
+import Todo from "../../../Todo";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef } from "react";
 import { AppDispatch, RootStates } from "@/redux/store";

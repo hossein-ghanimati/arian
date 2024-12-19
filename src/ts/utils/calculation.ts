@@ -61,6 +61,7 @@ export const sortByLast = <T extends WithCreatedAt>(param: T[]) => {
     -
     getDateTimeFromJalali(a.createdAt)
   );
+  
   return sortedItems
 }
 export const sortByFirst = <T extends WithCreatedAt>(param: T[]) => {
@@ -70,6 +71,7 @@ export const sortByFirst = <T extends WithCreatedAt>(param: T[]) => {
     -
     getDateTimeFromJalali(b.createdAt)
   );
+  
   return sortedItems
 }
 

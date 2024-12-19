@@ -69,11 +69,12 @@ export const setMethod = (
   }
 ) => {
   const newSortMethod = action.payload
-  let {todos, sortMethod} = state
+  // let {todos, sortMethod} = state;
 
-  sortMethod = newSortMethod;
-  todos = newSortMethod === "last" 
-    ? sortByLast(todos)
-    : sortByFirst(todos)
-
+  state.sortMethod = newSortMethod;
+  const newTodos = newSortMethod === "last" 
+    ? sortByLast(state.todos)
+    : sortByFirst(state.todos)
+  
+  state.todos = newTodos
 }

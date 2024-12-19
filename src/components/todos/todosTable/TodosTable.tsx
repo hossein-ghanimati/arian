@@ -1,5 +1,5 @@
-import Column from "@/components/statusColumn/Column";
-import FirstColumn from "@/components/statusColumn/FirstColumn";
+import Column from "@/components/todos/todosTable/statusColumn/Column";
+import FirstColumn from "@/components/todos/todosTable/statusColumn/FirstColumn";
 import { statuses } from "@/data/statuses";
 import { AppDispatch, RootStates } from "@/redux/store";
 import { remvoeTodoReq } from "@/services/axios/requests/todos";
@@ -20,8 +20,8 @@ const TodosTable = () => {
   },[])
 
   return (
-    <div className="todo-container has-vertical-scroll overflow-y-hidden overflow-auto  h-max flex rounded-2xl">
-      <div className="min-w-[1200px] h-[80vh] flex has-vertical-scroll">
+    <div className="todo-container has-vertical-scroll overflow-y-hidden w-full xl:justify-center overflow-auto  h-max flex rounded-2xl">
+      <div className="min-w-[1200px] h-[80vh] flex has-vertical-scroll overflow-hidden rounded-2xl">
         <FirstColumn
           onRemove={removeTodo}
           todos={todoList.todos.filter(todo => todo.status === "unknown")}
