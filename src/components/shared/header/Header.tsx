@@ -2,7 +2,8 @@ import { navItems } from "@/data/navItems";
 import { useModal } from "@/hooks/useModal";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import NavItem from "./navItem";
+import NavItem from "./NavItem";
+import Logo from "./Logo";
 
 const Header = () => {
   const {openModal} = useModal()
@@ -13,16 +14,7 @@ const Header = () => {
     <header>
       <nav className="bg-white border-gray-200 px-4 xs:px-6 py-2.5">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-          <a href="https://flowbite.com" className="flex items-center">
-            <img
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="mr-3 h-6 sm:h-9"
-              alt="Flowbite Logo"
-            />
-            <span className="self-center text-xl font-semibold whitespace-nowrap">
-              Flowbite
-            </span>
-          </a>
+          <Logo/>
           <div className="flex items-center xs:order-2">
             <button
               onClick={() => {

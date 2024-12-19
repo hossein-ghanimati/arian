@@ -2,42 +2,85 @@
 @tailwind utilities;
 @tailwind components;
 @layer base {
-     :root {
-        @apply scroll-smooth font-shabnam font-normal text-base select-none;
+  :root {
+    @apply scroll-smooth font-shabnam font-normal text-base select-none;
+  }
+  ::-webkit-scrollbar-track,
+  .has-horizontal-scroll::-webkit-scrollbar-track,
+  .has-vertical-scroll::-webkit-scrollbar-track {
+    @apply bg-[#dad9d9];
+  }
+  ::-webkit-scrollbar-thumb,
+  .has-horizontal-scroll::-webkit-scrollbar-thumb,
+  .has-vertical-scroll::-webkit-scrollbar-thumb {
+    @apply bg-[#808080] rounded-md cursor-n-resize;
+  }
+  ::-webkit-scrollbar,
+  .has-horizontal-scroll::-webkit-scrollbar {
+    @apply w-2;
+  }
+  .has-vertical-scroll::-webkit-scrollbar {
+    @apply h-3;
+  }
+
+  @keyframes logo-anim {
+    0%{
+        background-position: 0 0;
     }
-     ::-webkit-scrollbar-track,
-    .has-horizontal-scroll::-webkit-scrollbar-track,
-    .has-vertical-scroll::-webkit-scrollbar-track {
-        @apply bg-[#dad9d9];
-    }
-     ::-webkit-scrollbar-thumb,
-    .has-horizontal-scroll::-webkit-scrollbar-thumb,
-    .has-vertical-scroll::-webkit-scrollbar-thumb {
-        @apply bg-[#808080] rounded-md cursor-n-resize;
-    }
-     ::-webkit-scrollbar,
-    .has-horizontal-scroll::-webkit-scrollbar {
-        @apply w-2;
-    }
-    .has-vertical-scroll::-webkit-scrollbar {
-        @apply h-3;
+    100%{
+        background-position: 800% 0;
     }
 }
 
+}
+
 @layer utilities {
-    .mobile-menu-item__input:checked~.mobile-menu-item__dropdown {
-        @apply block opacity-100;
-    }
-    .text-success-foreground {
-        @apply text-white;
-    }
-    *:disabled {
-        @apply opacity-50;
-    }
-    input {
-        @apply outline-0 border-0;
-    }
-    div:where(.swal2-container) div:where(.swal2-popup) {
-        @apply bg-zinc-100 text-gray-700;
-    }
+  .mobile-menu-item__input:checked ~ .mobile-menu-item__dropdown {
+    @apply block opacity-100;
+  }
+  .text-success-foreground {
+    @apply text-white;
+  }
+  *:disabled {
+    @apply opacity-50;
+  }
+  input {
+    @apply outline-0 border-0;
+  }
+  div:where(.swal2-container) div:where(.swal2-popup) {
+    @apply bg-zinc-100 text-gray-700;
+  }
+
+  .logo-text {
+    -webkit-background-clip: text !important;
+    background: linear-gradient(
+      45deg,
+      #be123c,
+      #be123c,
+      #be123c,
+      white,
+      #be123c,
+      #be123c,
+      #be123c,
+      white,
+      #be123c,
+      #be123c,
+      #be123c,
+      white,
+      #be123c,
+      #be123c,
+      #be123c,
+      white
+    );
+    
+    @apply 
+        text-transparent
+        bg-logo-size
+        animate-logo
+        flex
+        items-center
+        justify-center
+        text-4xl
+    ;
+  }
 }

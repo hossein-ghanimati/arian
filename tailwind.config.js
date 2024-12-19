@@ -101,6 +101,12 @@ module.exports = {
             maxHeight: {
                 "2/5vh": "40vh",
             },
+            backgroundSize: {
+                "logo-size": "800%"
+            },
+            animation: {
+                "logo": "logo-anim 40s linear infinite"
+            },
             spacing: {
                 "calc-form": "calc(100vh - 450px)",
             },
