@@ -6,7 +6,7 @@ const sendApiReq = () => {
   
 
   const apiReq = axios.create({
-    baseURL: 'http://localhost:4000',
+    baseURL: 'https://arian-task.liara.run',
   });
 
   apiReq.interceptors.response.use(

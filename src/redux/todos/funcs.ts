@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { sortByFirst, sortByLast } from "@/ts/utils/calculation";
 import { InitialState, SortMethod } from "@/types/redux/todos.type";
 import { Todo, TodoStatus } from "@/types/todo.type";
