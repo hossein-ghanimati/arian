@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { sortByFirst, sortByLast } from "@/ts/utils/calculation";
 import { InitialState, SortMethod } from "@/types/redux/todos.type";
 import { Todo, TodoStatus } from "@/types/todo.type";
@@ -11,13 +13,11 @@ export const addTodo = (
       arg: Todo
     }
   }
-) => {
-  /* eslint-disable @typescript-eslint/no-unused-expressions */
-  
+) => {  
   const {todos, sortMethod} = state;
   sortMethod === "last"
-    ? todos.push(action.meta.arg)
-    : todos.unshift(action.meta.arg)
+    ? todos.unshift(action.meta.arg)
+    : todos.push(action.meta.arg)
 }
 export const removeTodo = (
   state: InitialState,
@@ -26,8 +26,7 @@ export const removeTodo = (
       arg: Todo
     }
   }
-) => {
-  /* eslint-disable @typescript-eslint/no-unused-expressions */    
+) => {   
   
   const todoIndex = state.todos.findIndex(todo => todo.id === action.meta.arg.id)
   state.todos.splice(todoIndex, 1) 
@@ -41,8 +40,7 @@ export const setNewStatus = (
       }
     }
   }
-) => {
-  /* eslint-disable @typescript-eslint/no-unused-expressions */  
+) => { 
   const newTodo = action.meta.arg.todo
   const todoIndex = state.todos.findIndex(todo => todo.id === newTodo.id)
   state.todos[todoIndex].status = newTodo.status
@@ -58,8 +56,7 @@ export const setPrevStatus = (
       }
     }
   }
-) => {
-  /* eslint-disable @typescript-eslint/no-unused-expressions */  
+) => { 
   const argument = action.meta.arg
   const todoIndex = state.todos.findIndex(todo => todo.id === argument.todo.id)
   state.todos[todoIndex].status = argument.prevStatus
@@ -79,8 +76,4 @@ export const setMethod = (
     ? sortByLast(todos)
     : sortByFirst(todos)
 
-  return {
-    todos,
-    sortMethod
-  }
 }

@@ -20,7 +20,7 @@
         @apply w-2;
     }
     .has-vertical-scroll::-webkit-scrollbar {
-        @apply h-10;
+        @apply h-3;
     }
 }
 

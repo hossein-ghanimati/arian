@@ -2,6 +2,7 @@ import { useModal } from '@/hooks/useModal'
 import { AppDispatch, RootStates } from '@/redux/store'
 import { addTodoReq } from '@/services/axios/requests/todos'
 import { addTodoSchema } from '@/services/validation/todos'
+import { getJalaliFromDate } from '@/ts/utils/calculation'
 import { Field, Form, Formik } from 'formik'
 import  { useCallback, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -24,7 +25,7 @@ const TodoModal = () => {
           id: crypto.randomUUID(),
           title,
           status: "unknown",
-          createdAt: (new Date()).toLocaleString()
+          createdAt: getJalaliFromDate()
         }
       )
     )

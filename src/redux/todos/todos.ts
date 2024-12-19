@@ -2,6 +2,7 @@ import { addTodoReq, changeTodoStatusReq, getTodosReq, remvoeTodoReq } from "@/s
 import { InitialState } from "@/types/redux/todos.type";
 import { createSlice } from "@reduxjs/toolkit";
 import { addTodo, removeTodo, setMethod, setNewStatus, setPrevStatus } from "./funcs";
+import { sortByFirst, sortByLast } from "@/ts/utils/calculation";
 
 const initialState: InitialState = {
   todos: [],
@@ -17,7 +18,11 @@ const slice = createSlice({
   extraReducers : builder => {
     builder.addCase(
       getTodosReq.fulfilled,
-      (state, action) => {state.todos = action.payload}
+      (state, action) => {
+        state.todos = state.sortMethod === "last" 
+          ? sortByLast(action.payload)
+          : sortByFirst(action.payload)
+      }
     )
 
 
