@@ -10,10 +10,10 @@ export const choseStatusColor = (status: TodoStatus) => {
     case "notStarted":
       return "bg-red-500 text-stone-200"
     case "unknown":
-      return "bg-white dark:bg-gray-900"
+      return "bg-white"
 
     default:
-      return "bg-white dark:bg-gray-900"
+      return "bg-white"
   }
 }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -63,7 +63,7 @@ const TodoModal = () => {
               </div>
               <div className="body p-3">
                 <Field innerRef={inputRef} autoFocus name="title" type="text" id="todo_input"
-                  className='py-2 px-4 w-full m-1 cursor-pointer border border-black dark:border-white rounded-md'
+                  className='py-2 px-4 w-full m-1 cursor-pointer border border-black rounded-md'
                 />
                 <button type="submit" id="todo_submit" 
                   disabled={!!errors.title?.length}

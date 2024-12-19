@@ -38,6 +38,6 @@
         @apply outline-0 border-0;
     }
     div:where(.swal2-container) div:where(.swal2-popup) {
-        @apply bg-zinc-100 dark: bg-gray-800 text-gray-700 dark: text-gray-100;
+        @apply bg-zinc-100 text-gray-700;
     }
 }
